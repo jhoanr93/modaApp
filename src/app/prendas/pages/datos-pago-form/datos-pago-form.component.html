@@ -1,0 +1,19 @@
+<form [formGroup]="pagoForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Forma de Pago *</mat-label>
+      <mat-select formControlName="formaPago">
+        <mat-option value="tarjeta">Tarjeta de Crédito/Débito</mat-option>
+        <mat-option value="bono">Bono</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre del Banco</mat-label>
+      <input matInput formControlName="banco" *ngIf="pagoForm.get('formaPago').value === 'tarjeta'">
+    </mat-form-field>
+  
+    <!-- Otros campos de formulario -->
+  
+    <button mat-raised-button color="primary" type="submit">Enviar</button>
+  </form>
+  
